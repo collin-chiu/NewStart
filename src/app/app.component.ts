@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  constructor(private messageService: MessageService) { }
+
+  onClearTop4Messages() {
+    this.messageService.clearTop4Messages();
+  }
+
+  onGenMessages(){
+    this.messageService.genMessages();
+  }
+
 }

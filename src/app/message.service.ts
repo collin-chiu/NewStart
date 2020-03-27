@@ -11,4 +11,12 @@ export class MessageService {
   clear() {
     this.messages = [];
   }
+
+  clearTop4Messages() {
+    this.messages.splice(0,4);
+  }
+
+  genMessages(){
+    this.messages = [...this.messages,...['a','b','c','d','e']];
+  }
 }

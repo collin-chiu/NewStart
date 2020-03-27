@@ -1,4 +1,9 @@
-<h1>{{title}}</h1>
+<h1>
+{{title}}
+<button class="clear" (click)="onClearTop4Messages()">clear Top 4 Messages</button>
+<button class="clear" (click)="onGenMessages()">Generate Messages</button>
+</h1>
+
 <nav>
   <a routerLink="/ci-dashboard">Dashboard</a>
   <a routerLink="/ci-heroes">Heroes</a>
