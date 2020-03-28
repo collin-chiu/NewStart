@@ -8,8 +8,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: '/ci-dashboard', pathMatch: 'full' },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'ci-heroes',loadChildren: "./heroes/heroes.module#HeroesModule"},
-  { path: 'ci-dashboard',loadChildren: "./dashboard/dashboard.module#DashboardModule"}
+  { path: 'ci-heroes',loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule)},
+  { path: 'ci-dashboard',loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)}
   // { path: 'ci-dashboard', component: DashboardComponent },
   // { path: 'ci-heroes', component: HeroesComponent }
 ];
