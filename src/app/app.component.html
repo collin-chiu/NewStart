@@ -6,7 +6,7 @@
 
 <nav>
   <a routerLink="/ci-dashboard">Dashboard</a>
-  <a routerLink="/ci-heroes">Heroes</a>
+  <a routerLink="/ci-heroes"> {{ heroesCount$ | async}} Heroes</a>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

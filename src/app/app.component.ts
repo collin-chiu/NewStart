@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MessageService } from './message.service';
+import { HeroService } from './hero.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,13 @@ import { MessageService } from './message.service';
 export class AppComponent {
   title = 'Tour of Heroes';
 
-  constructor(private messageService: MessageService) { }
+  get heroesCount$(){
+    return this.heroService.getHeroesCount$();
+  }
+  constructor(
+    private messageService: MessageService,
+    private heroService: HeroService
+    ) { }
 
   onClearTop4Messages() {
     this.messageService.clearTop4Messages();
