@@ -5,8 +5,8 @@
 </h1>
 
 <nav>
-  <a routerLink="/ci-dashboard">Dashboard</a>
-  <a routerLink="/ci-heroes"> {{ heroesCount$ | async}} Heroes</a>
+  <a routerLink="/ci-dashboard">{{link.dashboard}}</a>
+  <a routerLink="/ci-heroes"> {{ heroesCount$ | async}} {{link.heroes}}</a>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>
