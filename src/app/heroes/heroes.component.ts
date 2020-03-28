@@ -9,7 +9,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-  get heroesCount$(){
+  get heroesCount$() {
     return this.heroService.getHeroesCount$();
   }
   constructor(private heroService: HeroService) { }
@@ -39,10 +39,10 @@ export class HeroesComponent implements OnInit {
   delete(hero: Hero): void {
     this.heroService.deleteHero(hero).subscribe(() => {
       this.heroes = this.heroes.filter(h => h !== hero);
+      console.log(this.heroes);
       this.heroService.setHeroesCount$(this.heroes.length);
     });
   }
-
 
 
 }
