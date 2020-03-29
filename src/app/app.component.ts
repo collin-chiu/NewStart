@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MessageService } from './message.service';
 import { HeroService } from './hero.service';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 export class Link {
   heroes: string;
@@ -34,7 +36,13 @@ export class AppComponent {
   }
 
   getJsonFile() {
-    this.http.get('assets/data/dashboard-link.json').subscribe((res:Link) => this.link = res);
+    this.http.get('assets/data/dashboard-link.json').pipe(
+      catchError(() => {
+        return of({
+          heroes: "heroes",
+          dashboard: "dashboard"
+        })
+      })).subscribe((res: Link) => this.link = res);
   }
 
 }
