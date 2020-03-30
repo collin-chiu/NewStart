@@ -3,7 +3,7 @@
   <label for="exampleFormControlSelect1">Example select</label>
   <select class="browser-default custom-select" [(ngModel)]="selectValue"
     (ngModelChange)="displayComponent(selectValue)">
-    <option *ngFor="let opt of typeOption$ | async" [value]="opt.value">{{opt.text}}</option>
+    <option *ngFor="let opt of typeOption" [value]="opt.value">{{opt.text}}</option>
   </select>
 </div>
 

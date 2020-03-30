@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-type-b',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormTypeBComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      contractNumber: ['',Validators.required],
+      contractType: ['',Validators.required],
+      subDate:[],
+      files: []
+    });
+
   }
+
+  ngOnInit(): void {
+    this.form.valueChanges.subscribe(value => console.log('formValueCganges', value));
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      alert('Done !');
+    } else {
+      alert('Error!');
+    }
+  }
+
+  get f() { return this.form.controls; }
 
 }

@@ -1,1 +1,17 @@
-<p>resuable-form works!</p>
+<div [formGroup]="form">
+  <div class="row">
+    <div class="form-group col-lg-6">
+      <label for="effectDate">Effective Date</label>
+      <input type="date" class="form-control" formControlName="effectDate" id="effectDate"
+        [ngClass]="{ 'is-invalid': f.effectDate.errors }">
+      <div *ngIf=" f.effectDate.errors" class="invalid-feedback">
+        <span>Effective date greater than Expiry date </span>
+      </div>
+    </div>
+    <div class="form-group col-lg-6">
+      <label for="expiryDate">Expiry Date</label>
+      <input type="date" class="form-control" formControlName="expiryDate" id="expiryDate"
+        [ngClass]="{ 'is-invalid': f.expiryDate.errors }">
+    </div>
+  </div>
+</div>

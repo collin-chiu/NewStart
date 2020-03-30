@@ -1,1 +1,44 @@
-<p>form-type-a works!</p>
+
+<div class="container">
+  <h3>Contract Type A</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="contractNumber">Contract Number..</label>
+      <input type="number" class="form-control" placeholder="required..." formControlName="contractNumber"
+        id="contractNumber" [ngClass]="{ 'is-invalid': f.contractNumber.errors }">
+      <div *ngIf=" f.contractNumber.errors" class="invalid-feedback">
+        <span>Contract number is required</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-6">
+        <label for="party1">Party 1</label>
+        <input type="text" class="form-control" formControlName="party1" id="party1">
+      </div>
+      <div class="form-group col-lg-6">
+        <label for="party2">Party 2</label>
+        <input type="text" class="form-control" formControlName="party2" id="party2">
+      </div>
+    </div>
+
+    <app-resuable-form formControlName="subDate"></app-resuable-form>
+
+    <div class="form-group">
+      <label for="information">Information:</label>
+      <textarea formControlName="information" class="form-control" rows="5" id="information"
+        [ngClass]="{ 'is-invalid': f.information.errors }"></textarea>
+        <div *ngIf="f.information.errors.required" class="invalid-feedback">
+          <span>Required !</span>
+        </div>
+      <div *ngIf="f.information.errors.minlength" class="invalid-feedback">
+        <span>Min length > 5</span>
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
+    <button type="button" (click)="form.reset()">Reset</button>
+  </form>
+</div>
+<!-- <span> {{form.valid ? 'Valid' :'Unvalid'}} </span> -->

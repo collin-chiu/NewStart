@@ -1,1 +1,34 @@
-<p>form-type-b works!</p>
+<div class="container">
+  <h3>Contract Type B</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="contractNumber">Contract Number..</label>
+      <input type="number" class="form-control" placeholder="required..." formControlName="contractNumber"
+        id="contractNumber" [ngClass]="{ 'is-invalid': f.contractNumber.errors }">
+      <div *ngIf=" f.contractNumber.errors" class="invalid-feedback">
+        <span>Contract number is required</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contractType">Contract Type..</label>
+      <input type="text" class="form-control" placeholder="required..." formControlName="contractType" id="contractType"
+        [ngClass]="{ 'is-invalid': f.contractType.errors }">
+      <div *ngIf=" f.contractType.errors" class="invalid-feedback">
+        <span>Contract type is required</span>
+      </div>
+    </div>
+
+    <app-resuable-form formControlName="subDate"></app-resuable-form>
+
+    <div class="form-group">
+      <label for="files">Files:</label>
+      <input type="file" class="form-control-file border" id="files">
+    </div>
+
+    <button type="submit">Submit</button>
+    <button type="button" (click)="form.reset()">Reset</button>
+  </form>
+</div>
+<!-- <span> {{form.valid ? 'Valid' :'Unvalid'}} </span> -->
